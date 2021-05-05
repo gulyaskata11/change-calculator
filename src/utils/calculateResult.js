@@ -1,24 +1,25 @@
 const calculateResult = (amountOfMoney, amountToBePaid, valuta) => {
-    
 
+    const sortedNumberValutaArray = valuta.map(item => Number(item)).sort((a, b) => b - a)
+
+    console.log(sortedNumberValutaArray)
     const resultObject = {}
 
     let change = amountOfMoney - amountToBePaid
 
-    valuta.forEach(element => {
-        const myElement = Number(element)
+    sortedNumberValutaArray.forEach(element => {
         if (change === 0) {
-            return 
+            return
         }
-        const divideResult = Math.floor(change / myElement)
+        const divideResult = Math.floor(change / element)
         if (divideResult === 0) {
             return
         }
-        resultObject[myElement] = divideResult
-        change = change - myElement * divideResult
+        resultObject[element] = divideResult
+        change = change - element * divideResult
     })
 
-    return resultObject 
+    return resultObject
 }
 
 export default calculateResult
