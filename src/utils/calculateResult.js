@@ -6,15 +6,16 @@ const calculateResult = (amountOfMoney, amountToBePaid, valuta) => {
     let change = amountOfMoney - amountToBePaid
 
     valuta.forEach(element => {
+        const myElement = Number(element)
         if (change === 0) {
             return 
         }
-        const divideResult = Math.floor(change / element)
+        const divideResult = Math.floor(change / myElement)
         if (divideResult === 0) {
             return
         }
-        resultObject[element] = divideResult
-        change = change - element * divideResult
+        resultObject[myElement] = divideResult
+        change = change - myElement * divideResult
     })
 
     return resultObject 
